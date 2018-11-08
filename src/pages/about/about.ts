@@ -7,6 +7,19 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
+  lista: Array<any> = [
+    {
+      titulo: "Twitter",
+      color: "#AF3",
+      icon: "twitter"
+    },
+    {
+      titulo: "Facebook",
+      color: "#E2A",
+      icon: "facebook"
+    }
+  ];
+
   constructor(public navCtrl: NavController) {
 
   }

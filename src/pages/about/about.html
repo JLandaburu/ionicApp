@@ -1,11 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Nosotros
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+    <ion-card>
+      <ion-card-header>
+        Lista
+      </ion-card-header>
+    
+      <ion-list>
+        <button ion-item *ngFor="let item of lista">
+          <ion-icon [name]="item.icon" item-start [ngStyle]="{'color': item.color}"></ion-icon>
+          {{ item.titulo }}
+        </button>    
+      </ion-list>
+    </ion-card>
 </ion-content>
