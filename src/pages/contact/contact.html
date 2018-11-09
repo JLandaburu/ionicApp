@@ -13,4 +13,10 @@
       {{ item.title }}
     </button>
   </ion-list>
+
+  <button id="actionsheet" ion-button block (click)="openMenu()">
+    Show Action Sheet
+  </button>
+  <br>
+  <button ion-button id="loading" block (click)="presentLoading()">Show Loading</button>
 </ion-content>

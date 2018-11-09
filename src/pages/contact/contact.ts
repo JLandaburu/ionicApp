@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform, LoadingController } from 'ionic-angular';
 import { removeDebugNodeFromIndex } from '@angular/core/src/debug/debug_node';
 import { MasInfoPage } from '../mas-info/mas-info';
 
@@ -10,7 +10,7 @@ import { MasInfoPage } from '../mas-info/mas-info';
 export class ContactPage {
 
   myList = [];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public platform: Platform, public actionSheetCtrl: ActionSheetController, public loadingCtrl: LoadingController) {
     this.myList = [
       {
         'title': 'Facebook',
@@ -41,5 +41,61 @@ export class ContactPage {
 
   openNavDetailsPage(item){
     this.navCtrl.push(MasInfoPage, {item: item});
+  }
+
+  openMenu(){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Albums',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            console.log('Delete clicked');
+          }
+        },
+        {
+          text: 'Share',
+          icon: 'share-alt',
+          handler: () => {
+            console.log('Share clicked');
+          }
+        },
+        {
+          text: 'Play',
+          icon: 'play',
+          handler: () => {
+            console.log('Play clicked');
+          }
+        },
+        {
+          text: 'Favorite',
+          icon: 'heart',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close-circle',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  presentLoading() {
+    this.loadingCtrl.create({
+      content: '<p>Cargando...</p>',
+      cssClass: 'cargando',
+      duration: 3000,
+      dismissOnPageChange: true
+    }).present();
   }
 }
